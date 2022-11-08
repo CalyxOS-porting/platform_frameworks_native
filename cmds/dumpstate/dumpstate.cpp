@@ -762,9 +762,12 @@ uint64_t Dumpstate::ConsentCallback::getElapsedTimeMs() const {
 }
 
 void Dumpstate::PrintHeader() const {
+    std::string calyxos_version, incremental;
     std::string build, fingerprint, radio, bootloader, network;
     char date[80];
 
+    calyxos_version = android::base::GetProperty("ro.calyxos.version", "(unknown)");
+    incremental = android::base::GetProperty("ro.build.version.incremental", "(unknown)");
     build = android::base::GetProperty("ro.build.display.id", "(unknown)");
     fingerprint = android::base::GetProperty("ro.build.fingerprint", "(unknown)");
     radio = android::base::GetProperty("gsm.version.baseband", "(unknown)");
@@ -777,6 +780,8 @@ void Dumpstate::PrintHeader() const {
     printf("========================================================\n");
 
     printf("\n");
+    printf("CalyxOS version: %s\n", calyxos_version.c_str());
+    printf("Build incremental version: %s\n", incremental.c_str());
     printf("Build: %s\n", build.c_str());
     // NOTE: fingerprint entry format is important for other tools.
     printf("Build fingerprint: '%s'\n", fingerprint.c_str());
