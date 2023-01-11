@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c42558_4f96fb6a",
+        "filename": "libs/gui/BLASTBufferQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-01-11T20:25:31Z",
+      "side": 0,
+      "message": "could also change to LOGV but this is fine too.",
+      "revId": "0910bde03f3777e1eccff7012e08bdc6d82d2b2a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
