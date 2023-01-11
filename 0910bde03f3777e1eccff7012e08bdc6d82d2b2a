@@ -16,6 +16,24 @@
       "message": "could also change to LOGV but this is fine too.",
       "revId": "0910bde03f3777e1eccff7012e08bdc6d82d2b2a",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d0b213f_a4cb1d3c",
+        "filename": "libs/gui/BLASTBufferQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-11T20:27:23Z",
+      "side": 0,
+      "message": "Whew! Yeah, without digging too much deeper, I was concerned it might still take space in the buffer, which as we now know is limited to 256K no matter what the settings are (until we address that).",
+      "parentUuid": "93c42558_4f96fb6a",
+      "revId": "0910bde03f3777e1eccff7012e08bdc6d82d2b2a",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
