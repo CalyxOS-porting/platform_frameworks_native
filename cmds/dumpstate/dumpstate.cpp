@@ -2982,7 +2982,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     }
 
     if (options_->do_vibrate) {
-        Vibrate(150);
+        Vibrate(300);
     }
 
     if (zip_file != nullptr) {
@@ -3108,9 +3108,9 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
 
     /* vibrate a few but shortly times to let user know it's finished */
     if (options_->do_vibrate) {
-        for (int i = 0; i < 3; i++) {
-            Vibrate(75);
-            usleep((75 + 50) * 1000);
+        for (int i = 0; i < 5; i++) {
+            Vibrate(125);
+            usleep((125 + 50) * 1000);
         }
     }
 
