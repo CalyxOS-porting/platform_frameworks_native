@@ -16,6 +16,24 @@
       "message": "It seems like the vibration for ending a bug report doesn\u0027t always go off. That\u0027s not caused by this change, but it\u0027s a very annoying problem, since users can only guess when the bug report is complete.",
       "revId": "6e23ba9e85c50ac7f4d2443ceaaa41fc12e8b203",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7dde5d9_f40e0eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-12T16:15:49Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_frameworks_base/+/15275",
+      "parentUuid": "dba9853f_8ea8e904",
+      "revId": "6e23ba9e85c50ac7f4d2443ceaaa41fc12e8b203",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
