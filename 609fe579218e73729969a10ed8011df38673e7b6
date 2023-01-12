@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343a8406_4da301bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-12T16:23:54Z",
+      "side": 1,
+      "message": "Works, much more noticeable now. Benefits from Iacab568b to fix AOSP bug with finishing vibrations.",
+      "revId": "609fe579218e73729969a10ed8011df38673e7b6",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
