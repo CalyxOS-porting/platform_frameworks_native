@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59f51336_50157a60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-01-17T16:49:55Z",
+      "side": 1,
+      "message": "Apparently this line about \"buffer size set to 8M\" is not quite true, thanks to the quiet ignoring of logd sizes Google introduced with I5f76df0a.",
+      "revId": "5b52004f9f1d47b603770e4308b9e2b1660e0b67",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e81192a9_d54eff7b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
