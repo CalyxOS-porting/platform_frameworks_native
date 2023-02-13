@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fc5785_488ddde8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2023-02-13T17:46:19Z",
+      "side": 1,
+      "message": "Looks like we won\u0027t need this in QPR2, from this response at the AOSP side:\n\n`The log spam has been fixed in the internal QPR2 branch and will be available in AOSP when QPR2 is released.`",
+      "revId": "c950a194d4eac4b85d20b5564b2c063ced7e171c",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
