@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe238886_5981228a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-03-17T12:48:06Z",
+      "side": 1,
+      "message": "Commit in question: https://android.googlesource.com/platform/frameworks/native/+/76742845662",
+      "revId": "7f39ec451e8ee7167b184a4ed14cd04e171bc291",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
