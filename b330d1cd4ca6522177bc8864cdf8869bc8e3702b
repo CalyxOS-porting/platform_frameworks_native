@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd121439_78ececf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-01T12:57:34Z",
+      "side": 1,
+      "message": "Actually, we won\u0027t be making any further 13 builds for 4 / 4a unless there\u0027s a major issue found with hardware testing on 14. Hold till then",
+      "revId": "b330d1cd4ca6522177bc8864cdf8869bc8e3702b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
