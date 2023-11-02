@@ -16,6 +16,24 @@
       "message": "Actually, we won\u0027t be making any further 13 builds for 4 / 4a unless there\u0027s a major issue found with hardware testing on 14. Hold till then",
       "revId": "b330d1cd4ca6522177bc8864cdf8869bc8e3702b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8206d8_bedddf76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-02T12:56:53Z",
+      "side": 1,
+      "message": "22539: 5.0.3-kernel | https://review.calyxos.org/c/CalyxOS/device_google_coral-kernel/+/22539",
+      "parentUuid": "dd121439_78ececf9",
+      "revId": "b330d1cd4ca6522177bc8864cdf8869bc8e3702b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
