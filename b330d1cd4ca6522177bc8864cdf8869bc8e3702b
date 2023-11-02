@@ -34,6 +34,23 @@
       "parentUuid": "dd121439_78ececf9",
       "revId": "b330d1cd4ca6522177bc8864cdf8869bc8e3702b",
       "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61456b2a_c8cc0769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-02T21:58:43Z",
+      "side": 1,
+      "message": "Kernel change works on 14 and in lineage",
+      "revId": "b330d1cd4ca6522177bc8864cdf8869bc8e3702b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
     }
   ]
 }
