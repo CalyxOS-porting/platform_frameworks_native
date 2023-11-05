@@ -843,6 +843,8 @@ private:
             bool regionSampling, bool grayscale, ScreenCaptureResults&) EXCLUDES(mStateLock)
             REQUIRES(kMainThreadContext);
 
+    bool canAllocateHwcDisplayIdForVDS(uint64_t usage);
+
     // If the uid provided is not UNSET_UID, the traverse will skip any layers that don't have a
     // matching ownerUid
     void traverseLayersInLayerStack(ui::LayerStack, const int32_t uid,
@@ -1053,7 +1055,8 @@ private:
     void enableHalVirtualDisplays(bool);
 
     // Virtual display lifecycle for ID generation and HAL allocation.
-    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat) REQUIRES(mStateLock);
+    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat, bool canAllocateHwcForVDS)
+            REQUIRES(mStateLock);
     void releaseVirtualDisplay(VirtualDisplayId);
 
     void onActiveDisplayChangedLocked(const DisplayDevice* inactiveDisplayPtr,
@@ -1424,6 +1427,9 @@ private:
     const sp<WindowInfosListenerInvoker> mWindowInfosListenerInvoker;
 
     FlagManager mFlagManager;
+    bool mAllowHwcForVDS = false;
+    bool mAllowHwcForWFD = false;
+    int mFirstApiLevel = 0;
 
     // returns the framerate of the layer with the given sequence ID
     float getLayerFramerate(nsecs_t now, int32_t id) const {
