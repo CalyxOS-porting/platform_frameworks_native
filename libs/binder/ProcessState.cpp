@@ -58,6 +58,25 @@ const char* kDefaultDriver = "/dev/binder";
 
 // -------------------------------------------------------------------------
 
+namespace {
+bool readDriverFeatureFile(const char* filename) {
+    int fd = open(filename, O_RDONLY | O_CLOEXEC);
+    char on;
+    if (fd == -1) {
+        ALOGE_IF(errno != ENOENT, "%s: cannot open %s: %s", __func__, filename, strerror(errno));
+        return false;
+    }
+    if (read(fd, &on, sizeof(on)) == -1) {
+        ALOGE("%s: error reading to %s: %s", __func__, filename, strerror(errno));
+        close(fd);
+        return false;
+    }
+    close(fd);
+    return on == '1';
+}
+
+} // namespace
+
 namespace android {
 
 using namespace android::binder::impl;
@@ -476,27 +495,20 @@ bool ProcessState::isThreadPoolStarted() const {
 
 #define DRIVER_FEATURES_PATH "/dev/binderfs/features/"
 bool ProcessState::isDriverFeatureEnabled(const DriverFeature feature) {
-    static const char* const names[] = {
-        [static_cast<int>(DriverFeature::ONEWAY_SPAM_DETECTION)] =
-            DRIVER_FEATURES_PATH "oneway_spam_detection",
-        [static_cast<int>(DriverFeature::EXTENDED_ERROR)] =
-            DRIVER_FEATURES_PATH "extended_error",
-    };
-    int fd = open(names[static_cast<int>(feature)], O_RDONLY | O_CLOEXEC);
-    char on;
-    if (fd == -1) {
-        ALOGE_IF(errno != ENOENT, "%s: cannot open %s: %s", __func__,
-                 names[static_cast<int>(feature)], strerror(errno));
-        return false;
+    // Use static variable to cache the results.
+    if (feature == DriverFeature::ONEWAY_SPAM_DETECTION) {
+        static bool enabled = readDriverFeatureFile(DRIVER_FEATURES_PATH "oneway_spam_detection");
+        return enabled;
     }
-    if (read(fd, &on, sizeof(on)) == -1) {
-        ALOGE("%s: error reading to %s: %s", __func__,
-                 names[static_cast<int>(feature)], strerror(errno));
-        close(fd);
-        return false;
+    if (feature == DriverFeature::EXTENDED_ERROR) {
+        static bool enabled = readDriverFeatureFile(DRIVER_FEATURES_PATH "extended_error");
+        return enabled;
     }
-    close(fd);
-    return on == '1';
+    if (feature == DriverFeature::FREEZE_NOTIFICATION) {
+        static bool enabled = readDriverFeatureFile(DRIVER_FEATURES_PATH "freeze_notification");
+        return enabled;
+    }
+    return false;
 }
 
 status_t ProcessState::enableOnewaySpamDetection(bool enable) {

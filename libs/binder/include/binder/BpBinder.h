@@ -28,6 +28,7 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
+class IPCThreadState;
 class RpcSession;
 class RpcState;
 namespace internal {
@@ -68,6 +69,12 @@ public:
                                         void* cookie = nullptr,
                                         uint32_t flags = 0,
                                         wp<DeathRecipient>* outRecipient = nullptr);
+
+    [[nodiscard]] status_t addFrozenStateChangeCallback(
+        const wp<FrozenStateChangeCallback>& recipient);
+
+    [[nodiscard]] status_t removeFrozenStateChangeCallback(
+            const wp<FrozenStateChangeCallback>& recipient);
 
     virtual void* attachObject(const void* objectID, void* object, void* cleanupCookie,
                                object_cleanup_func func) final;
@@ -132,7 +139,10 @@ public:
         friend class ::android::ProcessState;
         friend class ::android::RpcSession;
         friend class ::android::RpcState;
-        explicit PrivateAccessor(const BpBinder* binder) : mBinder(binder) {}
+        friend class ::android::IPCThreadState;
+        explicit PrivateAccessor(const BpBinder* binder)
+              : mBinder(binder), mMutableBinder(nullptr) {}
+        explicit PrivateAccessor(BpBinder* binder) : mBinder(binder), mMutableBinder(binder) {}
 
         static sp<BpBinder> create(int32_t handle) { return BpBinder::create(handle); }
         static sp<BpBinder> create(const sp<RpcSession>& session, uint64_t address) {
@@ -146,9 +156,13 @@ public:
         uint64_t rpcAddress() const { return mBinder->rpcAddress(); }
         const sp<RpcSession>& rpcSession() const { return mBinder->rpcSession(); }
 
+        void onFrozenStateChanged(bool isFrozen) { mMutableBinder->onFrozenStateChanged(isFrozen); }
         const BpBinder* mBinder;
+        BpBinder* mMutableBinder;
     };
     const PrivateAccessor getPrivateAccessor() const { return PrivateAccessor(this); }
+
+    PrivateAccessor getPrivateAccessor() { return PrivateAccessor(this); }
 
 private:
     friend PrivateAccessor;
@@ -190,6 +204,14 @@ private:
         uint32_t flags;
     };
 
+            void onFrozenStateChanged(bool isFrozen);
+
+            struct FrozenStateChange {
+                bool isFrozen = false;
+                Vector<wp<FrozenStateChangeCallback>> callbacks;
+                bool initialStateReceived = false;
+            };
+
             void                reportOneDeath(const Obituary& obit);
             bool                isDescriptorCached() const;
 
@@ -197,6 +219,7 @@ private:
             volatile int32_t    mAlive;
             volatile int32_t    mObitsSent;
             Vector<Obituary>*   mObituaries;
+            std::unique_ptr<FrozenStateChange> mFrozen;
             ObjectManager       mObjects;
     mutable String16            mDescriptorCache;
             int32_t             mTrackedUid;

@@ -177,6 +177,8 @@ public:
                                                             BpBinder* proxy); 
             status_t            clearDeathNotification( int32_t handle,
                                                         BpBinder* proxy); 
+    [[nodiscard]] status_t addFrozenStateChangeCallback(int32_t handle, BpBinder* proxy);
+    [[nodiscard]] status_t removeFrozenStateChangeCallback(int32_t handle, BpBinder* proxy);
 
     static  void                shutdown();
 
@@ -212,20 +214,16 @@ private:
                                 IPCThreadState();
                                 ~IPCThreadState();
 
-            status_t            sendReply(const Parcel& reply, uint32_t flags);
-            status_t            waitForResponse(Parcel *reply,
-                                                status_t *acquireResult=nullptr);
-            status_t            talkWithDriver(bool doReceive=true);
-            status_t            writeTransactionData(int32_t cmd,
-                                                     uint32_t binderFlags,
-                                                     int32_t handle,
-                                                     uint32_t code,
-                                                     const Parcel& data,
-                                                     status_t* statusBuffer);
-            status_t            getAndExecuteCommand();
-            status_t            executeCommand(int32_t command);
-            void                processPendingDerefs();
-            void                processPostWriteDerefs();
+    status_t sendReply(const Parcel& reply, uint32_t flags);
+    status_t waitForResponse(Parcel* reply, status_t* acquireResult = nullptr);
+    status_t talkWithDriver(bool doReceive = true);
+    status_t writeTransactionData(int32_t cmd, uint32_t binderFlags, int32_t handle,
+                                                uint32_t code, const Parcel& data,
+                                                status_t* statusBuffer);
+    status_t getAndExecuteCommand();
+    status_t executeCommand(int32_t command);
+    void processPendingDerefs();
+    void processPostWriteDerefs();
 
             void                clearCaller();
 
