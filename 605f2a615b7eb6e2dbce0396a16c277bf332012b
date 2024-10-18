@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b43739f_6c98850b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-18T19:15:32Z",
+      "side": 1,
+      "message": "error: hardware/calyx/compat/Android.bp:372:1: \"libgui_shim_vendor\" depends on undefined module \"libgui_vendor\".",
+      "revId": "605f2a615b7eb6e2dbce0396a16c277bf332012b",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
